@@ -1,0 +1,18 @@
+@import "icons";
+@import "core";
+
+@import "base/scaffolding";
+@import "base/utilities";
+@import "base/typography";
+
+body {}
+
+/*
+** Override page transition of Nuxt.js
+*/
+.page-enter-active, .page-leave-active {
+  transition: opacity .35s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "nuxt_dashboard",
+  "version": "1.0.0",
+  "description": "Nuxt dashboard boilerplate",
+  "author": "鬼骨孖 <dxd.spirits@gmail.com>",
+  "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.1",
+    "axios": "^0.16.2",
+    "element-theme-chalk": "^2.2.0",
+    "element-ui": "^2.2.0",
+    "nuxt": "^1.4.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "bourbon": "^4.3.4",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "2.1.1",
+    "sass-loader": "^6.0.6"
+  }
+}
