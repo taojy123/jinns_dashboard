@@ -13,16 +13,7 @@
     <div class="pull-right">
       <nuxt-link class="nav-item" to="/">
         <i class="icon-ticket"></i>
-        <span>工单</span>
-      </nuxt-link>
-      <nuxt-link class="nav-item" to="/">
-        <i class="icon-news"></i>
-        <span>消息</span>
-      </nuxt-link>
-      <nuxt-link class="nav-item" to="/">
-        <i class="icon-profile"></i>
-        <span>账户中心</span>
-        <i class="icon-dropdown"></i>
+        <span>登录</span>
       </nuxt-link>
     </div>
   </div>
