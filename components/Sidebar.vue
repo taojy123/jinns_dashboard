@@ -1,21 +1,21 @@
 <template>
   <el-menu :default-active="$route.path" :router="true" @open="handleOpen" @close="handleClose" class="side-bar">
-    <nuxt-link to="/">
+    <nuxt-link to="/admin">
       <!--<img src="logo.png" alt=" " class="logo">-->
       <h1>JINNS</h1>
     </nuxt-link>
     <el-menu-item-group title="订房">
-      <el-menu-item index="/">
+      <el-menu-item index="/admin">
         <i class="icommon icon-home"></i>
         <span>概览</span>
       </el-menu-item>
-      <el-menu-item index="/rooms">
+      <el-menu-item index="/admin/rooms">
         <i class="icommon icon-customers"></i>
         <span>客房管理</span>
       </el-menu-item>
     </el-menu-item-group>
     <el-menu-item-group title="商城">
-      <el-menu-item index="/">
+      <el-menu-item index="/admin">
         <i class="icommon icon-customers"></i>
         <span>商品管理</span>
       </el-menu-item>

@@ -52,10 +52,10 @@ export default {
   },
   methods: {
     handleCreate () {
-      this.$router.push('/rooms/new')
+      this.$router.push('/admin/rooms/new')
     },
     handleEdit (index, row) {
-      this.$router.push('/rooms/' + row.id)
+      this.$router.push('/admin/rooms/' + row.id)
     },
     handleDelete (index, row) {
       this.removeOne(row.id)
