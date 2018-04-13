@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" :scoped="true">
-@import "../../../assets/stylesheets/core";
+@import "../../assets/stylesheets/core";
 .box-card {
   margin: 20px 25px;
   .el-card__body {
