@@ -28,7 +28,7 @@ module.exports = {
   ** Router
   */
   router: {
-    base: '/'
+    base: '/admin/'
   },
   /*
   ** Plugins
