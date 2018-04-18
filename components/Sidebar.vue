@@ -2,7 +2,6 @@
   <el-menu :default-active="$route.path" :router="true" @open="handleOpen" @close="handleClose" class="side-bar">
     <nuxt-link to="/">
       <!--<img src="logo.png" alt=" " class="logo">-->
-      <h1>JINNS</h1>
     </nuxt-link>
     <el-menu-item-group title="订房">
       <el-menu-item index="/">
