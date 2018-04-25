@@ -7,7 +7,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'MHD Dashboard',
+    title: 'Jinns Dashboard',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -49,10 +49,8 @@ module.exports = {
     '@nuxtjs/axios'
   ],
   axios: {
-    baseURL: 'https://mhdchina.heidianer.com/api/',  // use env API_URL to override
-    browserBaseURL: 'https://mhdchina.heidianer.com/api/',  // use env API_URL_BROWSER to override
-    // baseURL: 'http://localhost:8000/api/', // use env API_URL to override
-    // browserBaseURL: 'http://localhost:8000/api/', // use env API_URL_BROWSER to override
+    baseURL: process.env.API_URL || 'https://jinns.top/api/', // use env API_URL to override
+    browserBaseURL: process.env.API_URL_BROWSER || 'https://jinns.top/api/', // use env API_URL_BROWSER to override
     credentials: false // cross-site Access-Control requests doesn't need to be made using credentials
   },
   /*

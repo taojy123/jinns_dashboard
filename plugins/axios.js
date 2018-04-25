@@ -1,5 +1,6 @@
 export default function ({ $axios, store, redirect }) {
   $axios.onRequest((config) => {
+    return config
     const accessToken = store.state.auth.accessToken
     // console.log(config.url)
     if (/\/oauth\/dashboard\/token\/$/.test(config.url)) {

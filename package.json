@@ -1,13 +1,13 @@
 {
-  "name": "mhd_dashboard",
+  "name": "jinns_dashboard",
   "version": "1.0.0",
-  "description": "Admin dashboard of MHD",
-  "author": "XD <xd@hey.shop>",
+  "description": "Admin dashboard of Jinns",
+  "author": "tao <taojy123@163.com>",
   "private": true,
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "3000"
+      "port": "3030"
     }
   },
   "scripts": {
