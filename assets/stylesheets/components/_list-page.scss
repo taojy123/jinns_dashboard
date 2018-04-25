@@ -1,0 +1,42 @@
+.list-page {
+  min-height: calc(100vh-60px);
+  overflow: hidden;  // 这是为了消除下面元素的 margin 溢出
+}
+
+.list-page__header {
+  padding: 10px 20px;
+  @include clearfix();
+  border-bottom: 1px solid $color-bg-grey;
+}
+
+.list-page__filter {
+  padding: 10px 20px;
+  @include clearfix();
+  border-bottom: 1px solid $color-bg-grey;
+  .filter__item {
+    float: left;
+    & + .filter__item {
+      margin-left: 20px;
+    }
+  }
+}
+
+.list-page__batch {
+  padding: 10px 20px;
+  @include clearfix();
+  border-bottom: 1px solid $color-bg-grey;
+  .batch__item {
+    float: left;
+    & + .batch__item {
+      margin-left: 20px;
+    }
+  }
+}
+
+.list-page__table {
+  &.el-table {
+    th, td {
+      padding: 18px 2px;
+    }
+  }
+}

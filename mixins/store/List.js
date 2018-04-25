@@ -4,6 +4,8 @@ export default (urlRoot) => {
   if (!/\/$/.test(urlRoot)) urlRoot += '/'
   const url = (id) => (urlRoot + id + '/')
 
+  const namespaced = true
+
   const state = () => ({
     filter: {},
     orderBy: null,
@@ -15,39 +17,52 @@ export default (urlRoot) => {
     pending: false
   })
 
+  const getters = {}
+
   const mutations = {
-    LIST_STARTED (state, { filter, page, pageSize, orderBy }) {
+    LIST_STARTED (state, { filter, page, pageSize, orderBy } = {}) {
       state.pending = true
       state.filter = (filter || {})
       state.page = (page || 1)
       state.pageSize = (pageSize || 10)
       state.orderBy = (orderBy || null)
     },
-    LIST_SUCCEEDED (state, { count, data }) {
+    LIST_SUCCEEDED (state, { count, data } = {}) {
       state.pending = false
-      state.error = null
+      state.error = {}
       state.count = (count || 0)
-      state.data = (data || [])
+      state.data = _.cloneDeep(data || [])
     },
-    LIST_FAILED (state, payload) {
+    LIST_FAILED (state, { error } = {}) {
       state.pending = false
-      state.error = payload || {}
+      state.error = _.cloneDeep(error || {})
     },
-    REMOVE_STARTED (state, payload) {
+    REMOVE_STARTED (state) {
       state.pending = true
     },
-    REMOVE_SUCCEEDED (state, payload) {
+    REMOVE_SUCCEEDED (state) {
       state.pending = false
     },
-    REMOVE_FAILED (state, payload) {
+    REMOVE_FAILED (state, { error } = {}) {
       state.pending = false
+      state.error = _.cloneDeep(error || {})
+    },
+    PATCH_STARTED (state) {
+      state.pending = true
+    },
+    PATCH_SUCCEEDED (state) {
+      state.pending = false
+    },
+    PATCH_FAILED (state, { error } = {}) {
+      state.pending = false
+      state.error = _.cloneDeep(error || {})
     }
   }
 
   const actions = {
     listNext () {},
     listPrev () {},
-    list ({ commit }, { filter, page, pageSize, orderBy }) {
+    list ({ commit }, { filter, page, pageSize, orderBy } = {}) {
       commit('LIST_STARTED', { filter, page, pageSize, orderBy })
       const extra = {}
       const params = _.clone(filter)
@@ -77,23 +92,43 @@ export default (urlRoot) => {
         commit('LIST_SUCCEEDED', payload)
         return payload
       }, (err) => {
-        return Promise.reject(err.response.data)
+        const error = err.response.data
+        commit('LIST_FAILED', { error })
+      })
+    },
+    patch ({ commit }, { id, data, options }) {
+      commit('PATCH_STARTED')
+      const request_url = id == null ? urlRoot : url(id)
+      console.log(request_url, data, options, '===========')
+      const promise = this.$axios.patch(request_url, data, options)
+      return promise.then((res) => {
+        commit('PATCH_SUCCEEDED')
+        return {}
+      }, (err) => {
+        const error = err.response.data
+        commit('PATCH_FAILED', { error })
+        return Promise.reject(error)
       })
     },
     remove ({ commit }, { id }) {
       commit('REMOVE_STARTED')
       const promise = this.$axios.delete(url(id))
       return promise.then((res) => {
-        const payload = res.data
-        commit('REMOVE_SUCCEEDED', payload)
-        return payload
+        commit('REMOVE_SUCCEEDED')
+        return {}
       }, (err) => {
-        const payload = err.response.data
-        commit('REMOVE_FAILED', payload)
-        return Promise.reject(payload)
+        const error = err.response.data
+        commit('REMOVE_FAILED', { error })
       })
     }
   }
 
-  return { state, mutations, actions }
+  return {
+    namespaced,
+    state,
+    getters,
+    mutations,
+    actions
+  }
+
 }

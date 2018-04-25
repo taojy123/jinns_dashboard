@@ -1,128 +1,131 @@
 import _ from 'lodash'
 
+/*
+Best practice 关于命名, 只有全局的 mutation, getters 等等才大写, 别的都小写
+It is a commonly seen pattern to use constants for mutation types in various Flux implementations.
+This allows the code to take advantage of tooling like linters, and putting all constants in a single file
+allows your collaborators to get an at-a-glance view of what mutations are possible in the entire application.
+*/
+
 export default (urlRoot) => {
   if (!/\/$/.test(urlRoot)) urlRoot += '/'
   const url = (id) => (urlRoot + id + '/')
 
+  const namespaced = true
+
   const state = () => ({
+    id: null,
     data: {},
     error: {},
+    dirty: false,
     pending: false
   })
 
+  const getters = {
+    getField (state) {
+      return (path) => _.get(state.data, path)
+    },
+    getError (state) {
+      return (path, stringify=true) => {
+        const error = _.get(state.error, path)
+        if (stringify && _.isArray(error)) {
+          return error.join(', ')
+        } else {
+          return _.toString(error)
+        }
+      }
+    }
+  }
+
   const mutations = {
-    CREATE_STARTED (state, payload) {
+    updateField (state, { path, value }) {
+      /* updateField 会导致 dirty, reset 不会 */
+      state.dirty = true
+      let data = _.set(state.data, path, value)
+      state.data = { ...data }
+    },
+    reset (state, { id, data } = {}) {
+      /* reset 会重置 dirty, reset 一般用于初始化或者请求结束以后重置数据 */
+      state.dirty = false
+      state.pending = false
+      state.error = {}
+      state.data = _.cloneDeep(data || {})
+      state.id = +id || +state.data.id || null
+    },
+    REQUEST_STARTED (state) {
       state.pending = true
       state.error = {}
-      state.data = payload || {}
     },
-    CREATE_SUCCEEDED (state, payload) {
+    REQUEST_SUCCEEDED (state) {
       state.pending = false
       state.error = {}
-      state.data = payload || {}
     },
-    CREATE_FAILED (state, payload) {
+    REQUEST_FAILED (state, { error } = {}) {
       state.pending = false
-      state.error = payload || {}
-    },
-    RETRIEVE_STARTED (state, payload) {
-      state.pending = true
-    },
-    RETRIEVE_SUCCEEDED (state, payload) {
-      state.pending = false
-      state.error = {}
-      state.data = payload || {}
-    },
-    RETRIEVE_FAILED (state, payload) {
-      state.pending = false
-      state.error = payload || {}
-    },
-    UPDATE_STARTED (state, payload) {
-      state.pending = true
-      state.error = {}
-      state.data = payload || {}
-    },
-    UPDATE_SUCCEEDED (state, payload) {
-      state.pending = false
-      state.error = {}
-      state.data = payload || {}
-    },
-    UPDATE_FAILED (state, payload) {
-      state.pending = false
-      state.error = payload || {}
-    },
-    REMOVE_STARTED (state, payload) {
-      state.pending = true
-    },
-    REMOVE_SUCCEEDED (state, payload) {
-      state.pending = false
-      state.error = {}
-      state.data = payload || {}
-    },
-    REMOVE_FAILED (state, payload) {
-      state.pending = false
-      state.error = payload || {}
+      state.error = _.cloneDeep(error || {})
     }
   }
 
   const actions = {
-    create ({ commit }, { data }) {
-      // data 是外部传进来的, 可能会被改变, 这里 clone 一下
-      commit('CREATE_STARTED', _.cloneDeep(data))
-      const promise = this.$axios.post(urlRoot, data)
-      return promise.then((res) => {
-        const payload = res.data
-        commit('CREATE_SUCCEEDED', payload)
-        return payload
-      }, (err) => {
-        const payload = err.response.data
-        commit('CREATE_FAILED', payload)
-        return Promise.reject(payload)
-      })
-    },
-    retrieve ({ commit }, { id }) {
-      commit('RETRIEVE_STARTED')
+    retrieve ({ commit, state }) {
+      if (!state.id) {
+        throw new Error('Can\'t retrieve item without id')
+      }
+      commit('REQUEST_STARTED')
+      const id = state.id
       const promise = this.$axios.get(url(id))
       return promise.then((res) => {
-        const payload = res.data
-        commit('RETRIEVE_SUCCEEDED', payload)
-        return payload
+        const data = res.data
+        commit('reset', { id, data })
+        commit('REQUEST_SUCCEEDED')
+        return data
       }, (err) => {
-        const payload = err.response.data
-        commit('RETRIEVE_FAILED', payload)
-        return Promise.reject(payload)
+        const error = err.response.data
+        commit('REQUEST_FAILED', { error })
       })
     },
-    update ({ commit }, { id, data, partial }) {
-      // TODO: 这里要优化一下, partial 的时候, data 不能作为 payload 直接传给 UPDATE_STARTED 和 UPDATE_SUCCEEDED
-      // data 是外部传进来的, 可能会被改变, 这里 clone 一下
-      commit('UPDATE_STARTED', _.cloneDeep(data))
-      const method = partial ? 'patch' : 'put'
-      const promise = this.$axios[method](url(id), data)
+    save ({ commit, state }, { partial, create } = {}) {
+      commit('REQUEST_STARTED')
+      let promise, id = state.id
+      if (!id || create) {
+        promise = this.$axios['post'](urlRoot, state.data)
+      } else {
+        let method = !partial ? 'put' : 'patch'
+        promise = this.$axios[method](url(id), state.data)
+      }
       return promise.then((res) => {
-        const payload = res.data
-        commit('UPDATE_SUCCEEDED', payload)
-        return payload
+        const data = res.data
+        if (data.id) id = data.id
+        commit('reset', { id, data })
+        commit('REQUEST_SUCCEEDED')
+        return data
       }, (err) => {
-        const payload = err.response.data
-        commit('UPDATE_FAILED', payload)
-        return Promise.reject(payload)
+        const error = err.response.data
+        commit('REQUEST_FAILED', { error })
       })
     },
-    remove ({ commit }, { id }) {
-      commit('REMOVE_STARTED')
-      const promise = this.$axios.delete(url(id))
+    remove ({ commit, state }) {
+      if (!state.id) {
+        throw new Error('Can\'t delete item without id')
+      }
+      commit('REQUEST_STARTED')
+      const promise = this.$axios.delete(url(state.id))
       return promise.then((res) => {
-        const payload = res.data
-        commit('REMOVE_SUCCEEDED', payload)
-        return payload
+        commit('REQUEST_SUCCEEDED')
+        return {}
       }, (err) => {
-        const payload = err.response.data
-        commit('REMOVE_FAILED', payload)
-        return Promise.reject(payload)
+        const error = err.response.data
+        commit('REQUEST_FAILED', { error })
       })
     }
   }
 
-  return { state, mutations, actions }
+  return {
+    namespaced,
+    state,
+    getters,
+    mutations,
+    actions
+  }
+
 }

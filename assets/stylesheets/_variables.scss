@@ -1,8 +1,31 @@
+// color
+$color-title: #1F2D3D;
+$color-label: #3D464D;
+$color-text-light: #7F8FA4;
+$color-tab: #EFF0F4;
+$color-bg-grey: #EFF3F6;
+$color-bg-dark: #222C3C;
+$color-dark-menu: #5B6779;
+$color-dark-text: #B7C0CD;
+$color-hr: #E6EAEE;
+$color-hr-dark: #2A3547;
+$color-border: #E6EAEE;
+
+$color-white: #fff;
+// $color-blue: #4993FF;
+$color-blue: #009CFE;
+$color-purple: #745AF2;
+$color-green: #4FD05D;
+$color-red: #FF5A5F;
+$color-yellow: #FFCA2E;
+$color-dark: #4A5669;
+
 // font-weight
 $font-weight-regular: 400;
 $font-weight-bold: 600;
 
 // z-index
+$zindex-image: 3;
 $zindex-navbar: 10;
 $zindex-nav-dropdowns: 20;
 $zindex-drawer: 30;

@@ -1,0 +1,39 @@
+.form-page {
+  background-color: $color-bg-grey;
+  min-height: calc(100vh-60px);
+  overflow: hidden;  // 这是为了消除下面元素的 margin 溢出
+}
+
+.form-page__tabs {
+  > .el-tabs__header {
+    background-color: $--color-white;
+    padding: 0 25px;
+    margin-bottom: 0;
+    .el-tabs__nav-wrap::after {
+      background-color: transparent;
+    }
+    .el-tabs__item {
+      padding: 10px 20px;
+      height: 60px;
+      > span {
+        display: inline-block;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+  }
+  > .el-tabs__content {
+    //
+  }
+  .tabs-header__item {
+    //
+  }
+}
+
+.form-page__card {
+  // margin: 20px 20px;
+  margin-bottom: 20px;
+  .el-card__body {
+    // padding: 20px 40px;
+  }
+}

@@ -1,1 +1,278 @@
 $icomoon-font-path: "~/assets/fonts" !default;
+
+$icon-account: "\e900";
+$icon-add-circle: "\e901";
+$icon-add: "\e902";
+$icon-arrow-down-s: "\e903";
+$icon-arrow-down: "\e904";
+$icon-arrow-up: "\e905";
+$icon-categories: "\e906";
+$icon-clock: "\e907";
+$icon-close: "\e908";
+$icon-contract: "\e909";
+$icon-customers: "\e90a";
+$icon-data: "\e90b";
+$icon-dropdown: "\e90c";
+$icon-duplicate: "\e927";
+$icon-edit: "\e90d";
+$icon-employees: "\e90e";
+$icon-export: "\e90f";
+$icon-eye: "\e910";
+$icon-help-center: "\e911";
+$icon-home: "\e912";
+$icon-id: "\e913";
+$icon-import: "\e914";
+$icon-inventory: "\e915";
+$icon-minus: "\e916";
+$icon-more: "\e917";
+$icon-news: "\e918";
+$icon-pen: "\e919";
+$icon-percentage: "\e928";
+$icon-plans: "\e91a";
+$icon-print: "\e91b";
+$icon-products: "\e91c";
+$icon-profile: "\e91d";
+$icon-rmb-bold: "\e91e";
+$icon-rmb: "\e91f";
+$icon-save: "\e920";
+$icon-search: "\e921";
+$icon-ticket: "\e922";
+$icon-trash: "\e923";
+$icon-truck: "\e924";
+$icon-vehicle: "\e925";
+$icon-video: "\e926";
+
+@import "variables";
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('#{$icomoon-font-path}/icomoon.eot?14l81m');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?14l81m#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icomoon.woff2?14l81m') format('woff2'),
+    url('#{$icomoon-font-path}/icomoon.ttf?14l81m') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?14l81m') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?14l81m#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-account {
+  &:before {
+    content: $icon-account;
+  }
+}
+.icon-add-circle {
+  &:before {
+    content: $icon-add-circle;
+  }
+}
+.icon-add {
+  &:before {
+    content: $icon-add;
+  }
+}
+.icon-arrow-down-s {
+  &:before {
+    content: $icon-arrow-down-s;
+  }
+}
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down;
+  }
+}
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up;
+  }
+}
+.icon-categories {
+  &:before {
+    content: $icon-categories;
+  }
+}
+.icon-clock {
+  &:before {
+    content: $icon-clock;
+  }
+}
+.icon-close {
+  &:before {
+    content: $icon-close;
+  }
+}
+.icon-contract {
+  &:before {
+    content: $icon-contract;
+  }
+}
+.icon-customers {
+  &:before {
+    content: $icon-customers;
+  }
+}
+.icon-data {
+  &:before {
+    content: $icon-data;
+  }
+}
+.icon-dropdown {
+  &:before {
+    content: $icon-dropdown;
+  }
+}
+.icon-duplicate {
+  &:before {
+    content: $icon-duplicate;
+  }
+}
+.icon-edit {
+  &:before {
+    content: $icon-edit;
+  }
+}
+.icon-employees {
+  &:before {
+    content: $icon-employees;
+  }
+}
+.icon-export {
+  &:before {
+    content: $icon-export;
+  }
+}
+.icon-eye {
+  &:before {
+    content: $icon-eye;
+  }
+}
+.icon-help-center {
+  &:before {
+    content: $icon-help-center;
+  }
+}
+.icon-home {
+  &:before {
+    content: $icon-home;
+  }
+}
+.icon-id {
+  &:before {
+    content: $icon-id;
+  }
+}
+.icon-import {
+  &:before {
+    content: $icon-import;
+  }
+}
+.icon-inventory {
+  &:before {
+    content: $icon-inventory;
+  }
+}
+.icon-minus {
+  &:before {
+    content: $icon-minus;
+  }
+}
+.icon-more {
+  &:before {
+    content: $icon-more;
+  }
+}
+.icon-news {
+  &:before {
+    content: $icon-news;
+  }
+}
+.icon-pen {
+  &:before {
+    content: $icon-pen;
+  }
+}
+.icon-percentage {
+  &:before {
+    content: $icon-percentage;
+  }
+}
+.icon-plans {
+  &:before {
+    content: $icon-plans;
+  }
+}
+.icon-print {
+  &:before {
+    content: $icon-print;
+  }
+}
+.icon-products {
+  &:before {
+    content: $icon-products;
+  }
+}
+.icon-profile {
+  &:before {
+    content: $icon-profile;
+  }
+}
+.icon-rmb-bold {
+  &:before {
+    content: $icon-rmb-bold;
+  }
+}
+.icon-rmb {
+  &:before {
+    content: $icon-rmb;
+  }
+}
+.icon-save {
+  &:before {
+    content: $icon-save;
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search;
+  }
+}
+.icon-ticket {
+  &:before {
+    content: $icon-ticket;
+  }
+}
+.icon-trash {
+  &:before {
+    content: $icon-trash;
+  }
+}
+.icon-truck {
+  &:before {
+    content: $icon-truck;
+  }
+}
+.icon-vehicle {
+  &:before {
+    content: $icon-vehicle;
+  }
+}
+.icon-video {
+  &:before {
+    content: $icon-video;
+  }
+}

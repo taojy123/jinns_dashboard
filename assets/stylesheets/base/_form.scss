@@ -1,0 +1,46 @@
+// style for subheader
+.el-tabs__item.is-active {
+  font-weight: $font-weight-bold;
+}
+
+
+// style for single page form
+.el-form--inline .el-form-item, .el-date-editor.el-input, .el-date-editor.el-input__inner {
+  margin-right: 15px;
+}
+
+.el-form--inline .el-form-item__label {
+  // line-height: 15px;
+  // font-size: 13px;
+  // opacity: 0.8;
+}
+.el-tag.cell__tag {
+  & + & {
+    margin-left: 5px;
+  }
+}
+
+.form-page {
+  position: relative;
+  .form-page__actions {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+  }
+}
+
+.product-price__form-item {
+  margin-bottom: 5px;
+  .el-form-item__content,
+  .el-form-item__label {
+    line-height: 22px;
+  }
+  .el-form-item__label {
+    width: 40%;
+    text-align: left;
+  }
+  .el-form-item__content {
+    width: 100%;
+    text-align: right;
+  }
+}

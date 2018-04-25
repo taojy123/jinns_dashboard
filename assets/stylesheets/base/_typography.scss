@@ -4,6 +4,10 @@ textarea,
 button,
 p,
 span {
+  // font-size: 14px;
+  // line-height: $line-height-base;
+  // font-family: $font-family-base;
+  // color: $color-title;
   font-weight: $font-weight-regular;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -11,8 +15,10 @@ span {
 
 h1, h2, h3, h4, h5, h6 {
   display: block;
+  // font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
   font-weight: $font-weight-regular;
+  color: $color-title;
   a {
     text-decoration: none;
     font-weight: inherit;
@@ -20,6 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
+  color: $color-title;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
@@ -56,3 +63,4 @@ b, strong, .bold {
 small, .small {
   font-size: 13px;
 }
+

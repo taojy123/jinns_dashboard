@@ -1,13 +1,13 @@
 {
-  "name": "jinns_dashboard",
+  "name": "mhd_dashboard",
   "version": "1.0.0",
-  "description": "Jinns Dashboard",
-  "author": "tao <taojy123@163.com>",
+  "description": "Admin dashboard of MHD",
+  "author": "XD <xd@hey.shop>",
   "private": true,
   "config": {
     "nuxt": {
       "host": "0.0.0.0",
-      "port": "3030"
+      "port": "3000"
     }
   },
   "scripts": {
@@ -21,8 +21,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.0.1",
     "axios": "^0.16.2",
-    "element-theme-chalk": "^2.2.0",
-    "element-ui": "^2.2.0",
+    "element-theme-chalk": "^2.3.3",
+    "element-ui": "^2.3.3",
+    "moment": "^2.21.0",
     "nuxt": "^1.4.0"
   },
   "devDependencies": {

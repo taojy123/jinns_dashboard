@@ -7,3 +7,6 @@ export const actions = {
     }
   }
 }
+
+export const modules = {}
+export const mutations = {}

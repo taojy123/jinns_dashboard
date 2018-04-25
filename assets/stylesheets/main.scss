@@ -4,6 +4,13 @@
 @import "base/scaffolding";
 @import "base/utilities";
 @import "base/typography";
+@import "base/buttons";
+@import "base/form";
+
+@import "layouts/auth";
+
+@import "components/form-page";
+@import "components/list-page";
 
 body {}
 
@@ -15,4 +22,8 @@ body {}
 }
 .page-enter, .page-leave-to {
   opacity: 0;
+}
+
+.full-width .el-select {
+  width: 100%;
 }

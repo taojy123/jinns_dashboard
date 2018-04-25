@@ -1,0 +1,37 @@
+#auth-container {
+  position: relative;
+  height: 100vh;
+
+  .auth-box {
+    padding: 30px 50px;
+    @include position(absolute, 40% auto auto 50%);
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    background-color: transparent;
+  }
+  .auth__logo {
+    display: block;
+    margin: 10px auto 50px;
+    height: 60px;
+
+  }
+  .auth-box__title {
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  .auth-box__subtitle {
+    font-size: 14px;
+    color: rgba(#ffffff, 0.5);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .auth__form-item {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form__input__btn {
+    @include position(absolute, 4px 10px auto auto);
+  }
+}

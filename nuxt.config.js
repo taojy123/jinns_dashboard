@@ -1,21 +1,20 @@
 module.exports = {
   /*
   ** No server-side rendering (only client-side navigation)
-  ** TODO: registerModule 在 ssr 中有问题, ListPage 和 FormPage mixin 没法用了
   */
   mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'Jinns Dashboard',
+    title: 'MHD Dashboard',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt dashboard' }
+      { hid: 'description', name: 'description', content: 'Admin dashboard of MHD' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/admin/favicon.ico' }
     ]
   },
   /*
@@ -36,7 +35,12 @@ module.exports = {
   plugins: [
     { src: '~/plugins/nuxt-client-init.js', ssr: false },
     '~/plugins/axios',
-    '~/plugins/element-ui'
+    '~/plugins/element-ui',
+    '~/plugins/forms',
+    '~/plugins/config',
+    '~/plugins/moment',
+    '~/plugins/image/helper',
+    '~/plugins/filters',
   ],
   /*
   ** Modules
@@ -45,8 +49,10 @@ module.exports = {
     '@nuxtjs/axios'
   ],
   axios: {
-    baseURL: process.env.API_URL || 'https://jinns.top/api/', // use env API_URL to override
-    browserBaseURL: process.env.API_URL_BROWSER || 'https://jinns.top/api/', // use env API_URL_BROWSER to override
+    baseURL: 'https://mhdchina.heidianer.com/api/',  // use env API_URL to override
+    browserBaseURL: 'https://mhdchina.heidianer.com/api/',  // use env API_URL_BROWSER to override
+    // baseURL: 'http://localhost:8000/api/', // use env API_URL to override
+    // browserBaseURL: 'http://localhost:8000/api/', // use env API_URL_BROWSER to override
     credentials: false // cross-site Access-Control requests doesn't need to be made using credentials
   },
   /*

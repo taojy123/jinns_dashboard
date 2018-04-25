@@ -12,7 +12,9 @@ export default {
   methods: {
     start () {
       // 使用 ElementUI 的 Loading service
-      this.loading = this.$loading()
+      this.loading = this.$loading({
+        background: 'transparent'
+      })
     },
     finish () {
       // 以服务的方式调用的 Loading 需要异步关闭

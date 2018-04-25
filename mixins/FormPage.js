@@ -1,100 +1,71 @@
-import FormStore from '~/mixins/store/Form'
 import _ from 'lodash'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
-export default (propertyName, urlRoot) => {
+import FormStore from '~/mixins/store/Form'
+
+/*
+Best practice:
+FormPage 使用一个事先注册好的 store, 对于不是 FormPage 的表单,
+比如一些 inline edit 控件, 需要新初始化一个 FormStore 使用一个随机的 store name
+*/
+
+export default (storeName, urlRoot) => {
+  const propertyName = storeName
   return {
     asyncData ({ store, params }) {
+      /* FormPage 加了个默认的 asyncData, 如果 page 引用了 formPageMixin 但是想覆盖 asyncData,
+      可以定义一个自己的 asyncData (context), 然后调用 formPageMixin.asyncData(context) */
+      // store.registerModule(['forms', storeName], FormStore(urlRoot))
       if (params.id === 'new') {
-        const storeName = `CREATE_FORM_${propertyName}`
-        const restModule = FormStore(urlRoot)
-        restModule.namespaced = true
-        store.registerModule(storeName, restModule)
-        store.commit(`${storeName}/RETRIEVE_SUCCEEDED`, {})
-        const payload = _.cloneDeep(store.state[storeName])
-        return {
-          isDirty: false,
-          storeName: storeName,
-          [propertyName]: payload
-        }
+        store.commit(`forms/${storeName}/reset`)
       } else {
-        const storeName = `UPDATE_FORM_${propertyName}`
-        const restModule = FormStore(urlRoot)
-        restModule.namespaced = true
-        store.registerModule(storeName, restModule)
-        return store.dispatch(`${storeName}/retrieve`, {
-          id: params.id
-        }).then((res) => {
-          const payload = _.cloneDeep(store.state[storeName])
-          return {
-            isDirty: false,
-            storeName: storeName,
-            [propertyName]: payload
-          }
-        })
+        store.commit(`forms/${storeName}/reset`, { id: params.id })
+        return store.dispatch(`forms/${storeName}/retrieve`)
       }
     },
     computed: {
-      isPending() {
-        return this.$store.state[this.storeName].pending
-      }
+      ...mapState(`forms/${storeName}`, {
+        [propertyName]: (state) => state
+      }),
+      ...mapGetters(`forms/${storeName}`, [
+        'getField',
+        'getError'
+      ])
     },
-    destroyed () {
-      this.$store.unregisterModule(this.storeName)
-    },
-    watch: {
-      [`${propertyName}.data`]: {
-        handler (val) {
-          this.isDirty = true
-        },
-        deep: true
-      }
-    },
+    // created () {},
+    // destroyed () {
+    //   if (!this._KEEP_STORE) {
+    //     this.$store.unregisterModule(['forms', storeName])
+    //   }
+    // },
+    // filters: {
+    //   error: function (value) {
+    //     // make error text readable
+    //     if (_.isArray(value)) {
+    //       return value.join(', ')
+    //     } else {
+    //       return _.toString(value)
+    //     }
+    //   }
+    // },
     methods: {
-      // changeField (value, field) {},
-      submitForm (formName) {
-        const storeName = this.storeName
-        const updateProperty = () => {
-          const payload = _.cloneDeep(this.$store.state[storeName])
-          // this[propertyName] = payload
-          this.$set(this, propertyName, payload)
-        }
-        if (this.$route.params.id === 'new') {
-          return this.$store.dispatch(`${storeName}/create`, {
-            data: this[propertyName]['data']
-          }).then((data) => {
-            updateProperty()
-            this.$nextTick(() => { this.isDirty = false })
-            this.$message({ message: '保存成功', type: 'success' })
-            this.$router.replace(this.$route.path.replace(/new\/?$/, data.id))
-          }).catch((err) => {
-            updateProperty()
-            console.error('Form Error', err)
-          })
-        } else {
-          return this.$store.dispatch(`${storeName}/update`, {
-            id: this.$route.params.id,
-            data: this[propertyName]['data']
-          }).then(() => {
-            updateProperty()
-            // updateProperty 会触发 watch [`${PROPERTY}.data`], 导致 isDirty 变成 true
-            this.$nextTick(() => { this.isDirty = false })
-            this.$message({ message: '保存成功', type: 'success' })
-          }).catch((err) => {
-            updateProperty()
-            console.error('Form Error', err)
-          })
-        }
+      updateField (path, value) {
+        this.$store.commit(`forms/${storeName}/updateField`, { path, value })
       },
-      resetForm (formName) {}
-    },
-    filters: {
-      error: function (value) {
-        // make error text readable
-        if (_.isArray(value)) {
-          return value.join(', ')
-        } else {
-          return _.toString(value)
-        }
+      submitForm () {
+        return this.$store.dispatch(`forms/${storeName}/save`).then((data) => {
+          this.$message({ message: '保存成功', type: 'success' })
+          if (this.$route.params.id === 'new') {
+            // this._KEEP_STORE = true
+            let id = this[propertyName].id
+            this.$router.replace(this.$route.path.replace(/new\/?$/, id))
+          }
+        }).catch((err) => {
+          console.error('Form Error', err)
+        })
+      },
+      resetForm () {
+        this.$store.commit(`forms/${storeName}/reset`, {})
       }
     }
   }

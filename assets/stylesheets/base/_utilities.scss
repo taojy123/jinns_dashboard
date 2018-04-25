@@ -1,3 +1,91 @@
+.grey-bg {
+  background-color: $color-bg-grey;
+  min-height: 100vh;
+  overflow: hidden;  // 这是为了消除 .grey-bg 下面 .content-short 的 margin 溢出
+}
+
+.content-wide {
+  background-color: $color-white;
+  border: solid 1px $color-border;
+  margin: 20px 25px;
+  border-radius: 3px;
+}
+
+.content-narrow {
+  background-color: $color-white;
+  border: solid 1px $color-border;
+  margin: 20px 25px 20px 0;
+  border-radius: 3px;
+}
+
+.content-short {
+  background-color: $color-white;
+  border: solid 1px $color-border;
+  margin: 20px 25px;
+  border-radius: 3px;
+}
+
+.well-box-l {
+  padding: 20px 40px;
+}
+
+.well-box-m {
+  padding: 16px 30px;
+}
+.well-box-s {
+  padding: 10px 30px;
+}
+
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+hr.hr--light {
+  border: 0.5px solid $color-hr;
+  margin-bottom: 20px;
+}
+
+hr.hr--dark {
+  border: 0.5px solid $color-hr-dark;
+  margin: 20px;
+}
+
+
+.container-s {
+  max-width: 940px;
+}
+.container-m {
+  max-width: 1080px;
+}
+.container-l {
+  max-width: 1260px;
+}
+.container-full {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.top-margin {
+  margin-top: 70px;
+}
+.bottom-margin {
+  margin-bottom: 70px;
+}
+.top-padding {
+  padding-top: 30px;
+}
+.bottom-padding {
+  padding-bottom: 30px;
+}
+.vertical-padding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .clearfix {
   @include clearfix();
 }
@@ -24,4 +112,14 @@
 
 .hidden {
   display: none !important;
+}
+
+.bg-img {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
 }

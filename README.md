@@ -1,6 +1,6 @@
-# nuxt_dashboard
+# mhd_dashboard
 
-> Nuxt dashboard boilerplate
+> Admin dashboard of MHD
 
 ## Build Setup
 

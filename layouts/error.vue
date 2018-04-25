@@ -30,36 +30,6 @@ export default {
 }
 </script>
 
-<style lang='scss'>
-@import "assets/stylesheets/core";
-.app-frame {
-  position: relative;
-  min-height: 100vh;
-  padding-left: 240px;
-  padding-top: 62px;
-  // &::after {
-  //   clear: both;
-  //   content: "";
-  //   display: block;
-  // }
-  > header {
-    height: 62px;
-    @include position(fixed, 0 0 auto 240px);
-    z-index: $zindex-header;
-  }
-  > aside {
-    min-height: 100vh;
-    width: 240px;
-    @include position(fixed, 0 auto 0 0);
-    z-index: $zindex-sidebar;
-  }
-  > main {
-    min-height: calc(100vh-62px);
-    min-width: 980px;
-  }
-}
-</style>
-
 <style scoped>
 .error-page {
   color: #000;

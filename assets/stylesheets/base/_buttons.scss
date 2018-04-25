@@ -1,0 +1,37 @@
+.btn {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: $font-weight-bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.btn--radius {
+  border-radius: 4px;
+}
+.btn--round {
+  border-radius: 100px;
+}
+.btn--s {
+  padding: 6px;
+  width: 80px;
+  height: 26px;
+}
+.btn--m {
+  padding: 8px;
+  width: 130px;
+  height: 38px;
+}
+.btn--gradient {
+  @extend .btn;
+  color: $color-white;
+  background-image: linear-gradient(to top, #3a87fd, #2da1f8);
+  border: solid 1px #1585d8;
+  opacity: 1;
+  &:hover {
+    opacity: 0.92;
+  }
+}
+.btn--yellow {
+  background-color: $color-yellow;
+}

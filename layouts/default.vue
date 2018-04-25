@@ -31,26 +31,30 @@ export default {
     position: relative;
     min-height: 100vh;
     padding-left: 240px;
-    padding-top: 62px;
+    padding-top: 60px;
     // &::after {
     //   clear: both;
     //   content: "";
     //   display: block;
     // }
     > header {
-      height: 62px;
+      height: 60px;
       @include position(fixed, 0 0 auto 240px);
       z-index: $zindex-header;
     }
     > aside {
+      // visibility: hidden;
       min-height: 100vh;
       width: 240px;
       @include position(fixed, 0 auto 0 0);
       z-index: $zindex-sidebar;
     }
     > main {
-      min-height: calc(100vh-62px);
+      min-height: calc(100vh-60px);
       min-width: 980px;
+    }
+    > aside, > main {
+      overflow: hidden;
     }
   }
 </style>
