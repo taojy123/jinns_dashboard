@@ -11,7 +11,7 @@
     <el-table-column prop="name" label="房型名称"></el-table-column>
     <el-table-column prop="price" label="价格"></el-table-column>
     <el-table-column prop="quantity" label="数量"></el-table-column>
-    <el-table-column prop="bed_type" label="床型" show-overflow-tooltip></el-table-column>
+    <el-table-column prop="bed_type" label="床型"></el-table-column>
     <el-table-column prop="bed_width" label="床宽"></el-table-column>
     <el-table-column prop="capacity" label="入住人数"></el-table-column>
     <el-table-column prop="floor" label="楼层"></el-table-column>

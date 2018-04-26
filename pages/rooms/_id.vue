@@ -43,7 +43,7 @@
             </el-col>
             <el-col :span="8">
               <el-card class="form-page__card" shadow="never">
-                <el-form-item label="用户分组">
+                <el-form-item label="房间主图">
                 </el-form-item>
               </el-card>
             </el-col>
