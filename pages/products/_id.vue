@@ -3,7 +3,7 @@
     <el-tabs class="form-page__tabs" v-model="activeTab" @tab-click="handleClickTab">
       <el-tab-pane label="基本信息" name="1" style="padding: 20px;">
 
-        <el-form label-position="top" :inline="false" :model="product.data">
+        <el-form label-position="top" :inline="false" >
           <el-row :gutter="20">
             <el-col :span="16">
               <el-card class="form-page__card" shadow="never">
@@ -23,6 +23,7 @@
             <el-col :span="8">
               <el-card class="form-page__card" shadow="never">
                 <el-form-item label="商品主图">
+                  <upload-one-image :value="product.data.pic" @change="(res) => handleUploadChange(res)" />
                 </el-form-item>
               </el-card>
             </el-col>
@@ -40,6 +41,7 @@
 
 <script>
 import FormPage from '~/mixins/FormPage'
+import UploadOneImage from '~/components/uploaders/UploadOneImage'
 
 const storeName = 'product'
 const formMixin = FormPage(storeName)
@@ -47,7 +49,9 @@ const formMixin = FormPage(storeName)
 export default {
   head: { title: '商品详情' },
   meta: { title: '商品详情' },
-  components: {},
+  components: {
+    UploadOneImage
+  },
   mixins: [formMixin],
   data () {
     let hash = this.$route.hash.slice(1)
@@ -66,6 +70,9 @@ export default {
     },
     handleClickTab (tab, event) {
       this.updateHash(tab.name)
+    },
+    handleUploadChange ({ src }) {
+      this.updateField('pic', src)
     }
   }
 }
