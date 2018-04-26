@@ -38,15 +38,15 @@
     props: {
       value: {
         // 和其他 input 类型一样, value 表示初始值
-        type: Object,
+        type: String,
         default () {
-          return {}
+          return ''
         }
       },
       enableRemove: {
         type: Boolean,
         default () {
-          return true
+          return false
         }
       }
     },
@@ -88,13 +88,13 @@
       loadImage(){
         // this.metafield = this.value && this.value.metafield || {}
         // console.log(this.metafield)
-        if (this.value && this.value.src) {
+        if (this.value) {
           this.pending = true
           this.image = new Image()
           this.image.onload = this.loadImageComplete
           this.image.onerror = this.loadImageFailure
-          this.image.src = this.getFormattedUrl(this.value.src)
-          this.image.position = this.value.position || null
+          this.image.src = this.getFormattedUrl(this.value)
+          this.image.position = null
         } else {
           this.image = null
         }

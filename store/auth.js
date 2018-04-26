@@ -42,7 +42,7 @@ export const actions = {
     return promise
   },
   get_upload_token ({ commit }) {
-    const promise = this.$axios.get(`/clients/qiniu-uptoken/${qiniu.BUCKET}/`, {
+    const promise = this.$axios.get(`/api/qiniu_token/${qiniu.BUCKET}/`, {
       params: {
         policy: {
           returnBody: '{\

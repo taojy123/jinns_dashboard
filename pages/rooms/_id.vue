@@ -43,7 +43,8 @@
             </el-col>
             <el-col :span="8">
               <el-card class="form-page__card" shadow="never">
-                <el-form-item label="房间主图">
+                <el-form-item label="客房主图">
+                  <upload-one-image :value="room.data.pic" @change="(res) => handleUploadChange(res)" />
                 </el-form-item>
               </el-card>
             </el-col>
@@ -61,6 +62,7 @@
 
 <script>
 import FormPage from '~/mixins/FormPage'
+import UploadOneImage from '~/components/uploaders/UploadOneImage'
 
 const storeName = 'room'
 const formMixin = FormPage(storeName)
@@ -68,7 +70,9 @@ const formMixin = FormPage(storeName)
 export default {
   head: { title: '客房详情' },
   meta: { title: '客房详情' },
-  components: {},
+  components: {
+    UploadOneImage
+  },
   mixins: [formMixin],
   data () {
     let hash = this.$route.hash.slice(1)
@@ -87,6 +91,9 @@ export default {
     },
     handleClickTab (tab, event) {
       this.updateHash(tab.name)
+    },
+    handleUploadChange ({ src }) {
+      this.updateField('pic', src)
     }
   }
 }
