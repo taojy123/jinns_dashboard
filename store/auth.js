@@ -42,7 +42,7 @@ export const actions = {
     return promise
   },
   get_upload_token ({ commit }) {
-    const promise = this.$axios.get(`/api/qiniu/uptoken/`)
+    const promise = this.$axios.get(`/api/shop/qiniu/uptoken/`)
     promise.then(qiniuRes => {
       qiniu.UPLOAD_TOKEN = qiniuRes.data && qiniuRes.data.uptoken || ''
     }, (err) => {
