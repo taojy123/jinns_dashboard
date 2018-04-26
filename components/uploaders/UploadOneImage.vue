@@ -141,7 +141,7 @@
           this.$message.warning('缺少上传凭证，无法完成上传')
           return
         }else if(file.size >= qiniu.MAX_FILE_SIZE) {
-          this.$message.error(`文件不得大于${(qiniu.MAX_FILE_SIZE || 1024 * 1024 * 20) / 1024 / 1024}MB`)
+          this.$message.error(`文件不得大于${qiniu.MAX_FILE_SIZE / 1024 / 1024}MB`)
           return
         }
       },

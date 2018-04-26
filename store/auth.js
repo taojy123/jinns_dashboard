@@ -62,7 +62,7 @@ export const actions = {
     promise.then(qiniuRes => {
       qiniu.UPLOAD_TOKEN = qiniuRes.data && qiniuRes.data.uptoken || ''
     }, (err) => {
-      const err_msg = err && err.response && err.response.data && err.response.data.detail || '未能获取用户信息'
+      const err_msg = err && err.response && err.response.data && err.response.data.detail || '未能获取qiniu信息'
       console.log(err_msg)
     })
     return promise

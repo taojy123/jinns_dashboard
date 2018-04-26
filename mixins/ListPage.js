@@ -98,6 +98,7 @@ export default (storeName, urlRoot) => {
         return this._updateURL({ filter, page, pageSize, orderBy })
       },
       removeOne (id) {
+        if(!confirm('确定删除？')){return}
         return this.$store.dispatch(`lists/${storeName}/remove`, {
           id: id
         }).then(() => {
