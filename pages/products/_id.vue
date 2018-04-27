@@ -3,7 +3,7 @@
     <el-tabs class="form-page__tabs" v-model="activeTab" @tab-click="handleClickTab">
       <el-tab-pane label="基本信息" name="1" style="padding: 20px;">
 
-        <el-form label-position="top" :inline="false" >
+        <el-form label-position="top" :inline="false">
           <el-row :gutter="20">
             <el-col :span="16">
               <el-card class="form-page__card" shadow="never">
