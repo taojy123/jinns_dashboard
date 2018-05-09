@@ -36,7 +36,7 @@ export default {
   },
   data () {
     return {
-      title: this.$store.state.header.title || 'MHD'
+      title: this.$store.state.header.title || 'Jinns'
     }
   },
   computed: {
@@ -50,7 +50,7 @@ export default {
       ** this.title 不能放进 computed, 因为 setTitle 是在 route middleware 里进行的
       ** title 放进 computed 会出现 header 上的 title 先改变, 再切换页面
       */
-      this.title = this.$store.state.header.title || 'MHD'
+      this.title = this.$store.state.header.title || 'Jinns'
     }
   }
 }

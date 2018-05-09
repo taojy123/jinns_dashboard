@@ -24,7 +24,7 @@ export default {
     return {
       error: null,
       form: {
-        email: 'mhdchina@heidianer.com',
+        email: 'test@jinns.com',
         password: '1234abcd'
       }
     }

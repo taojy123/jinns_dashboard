@@ -16,6 +16,9 @@ export default (storeName, urlRoot) => {
       /* FormPage 加了个默认的 asyncData, 如果 page 引用了 formPageMixin 但是想覆盖 asyncData,
       可以定义一个自己的 asyncData (context), 然后调用 formPageMixin.asyncData(context) */
       // store.registerModule(['forms', storeName], FormStore(urlRoot))
+      if (!params.id) {
+        params.id = 'self'
+      }
       if (params.id === 'new') {
         store.commit(`forms/${storeName}/reset`)
       } else {

@@ -3,15 +3,9 @@
       class="el-menu-vertical-demo side-bar"
       background-color="#FFF" text-color="#080f3a" active-text-color="#222C3C">
     <nuxt-link to="/">
-      <!--<img src="https://up.img.heidiancdn.com/o_1c9jsbofoarg1iqf14u97fl1lpf0logo.png?imageView2/2/h/45" alt=" " class="logo">-->
+      <img src="/admin/icon.png" alt="Jinns" class="logo" width="60">
     </nuxt-link>
-    <hr class="hr--light">
-    <el-menu-item-group title="订单">
-      <el-menu-item index="/orders">
-        <i class="icommon icon-contract"></i>
-        <span>订单列表</span>
-      </el-menu-item>
-    </el-menu-item-group>
+
     <hr class="hr--light">
     <el-menu-item-group title="订房">
       <el-menu-item index="/rooms">
@@ -24,6 +18,13 @@
       <el-menu-item index="/products">
         <i class="icommon icon-employees"></i>
         <span>产品管理</span>
+      </el-menu-item>
+    </el-menu-item-group>
+    <hr class="hr--light">
+    <el-menu-item-group title="订单">
+      <el-menu-item index="/orders">
+        <i class="icommon icon-contract"></i>
+        <span>订单列表</span>
       </el-menu-item>
     </el-menu-item-group>
   </el-menu>
@@ -53,8 +54,9 @@ export default {
   overflow: auto;
   z-index: $zindex-sidebar;
   .logo {
-    margin-top: 30px;
-    margin-left: 52px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
   }
   .icommon {
     margin-left: 5px;

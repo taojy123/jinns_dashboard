@@ -7,7 +7,7 @@ export default {
   meta: { title: '概览' },
   components: {},
   mounted () {
-    this.$router.replace('/rooms')
+    this.$router.replace('/shop')
   }
 }
 </script>

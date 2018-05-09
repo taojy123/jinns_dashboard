@@ -50,7 +50,7 @@ export default (urlRoot) => {
       state.pending = false
       state.error = {}
       state.data = _.cloneDeep(data || {})
-      state.id = +id || +state.data.id || null
+      state.id = +id || +state.data.id || id || null
     },
     REQUEST_STARTED (state) {
       state.pending = true
