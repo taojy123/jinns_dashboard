@@ -3,7 +3,7 @@
       class="el-menu-vertical-demo side-bar"
       background-color="#FFF" text-color="#080f3a" active-text-color="#222C3C">
     <nuxt-link to="/">
-      <img src="/admin/icon.png" alt="Jinns" class="logo" width="60">
+      <img src="/admin/jinnslogo.png" alt="Jinns" class="logo" width="100">
     </nuxt-link>
 
     <hr class="hr--light">
