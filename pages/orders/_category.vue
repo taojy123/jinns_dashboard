@@ -15,7 +15,7 @@
 
   </div>
   <el-table tooltip-effect="dark" :data="orders.data" v-loading="orders.pending" style="width: 100%">
-    <el-table-column prop="order_number" label="订单号" width="180"></el-table-column>
+    <el-table-column prop="order_number" label="订单号" width="180" show-overflow-tooltip></el-table-column>
     <el-table-column prop="get_category_display" label="类型"></el-table-column>
     <el-table-column prop="title" label="内容" width="200"></el-table-column>
     <el-table-column prop="price" label="总价"></el-table-column>
@@ -56,21 +56,14 @@ export default {
       multipleSelection: [],
       searchKeyword: '',
       searchStatus: '',
+      category: this.$route.params.category || 'room'
     }
   },
+  asyncData ({ store, params, query }) {
+    query.category = params.category || 'room'
+    listMixin.asyncData({ store, params, query })
+  },
   methods: {
-    handleSelectionChange (val) {
-      this.multipleSelection = val
-    },
-    handleCreate () {
-      this.$router.push('/orders/new')
-    },
-    handleEdit (index, row) {
-      this.$router.push('/orders/' + row.id)
-    },
-    handleDelete (index, row) {
-      this.removeOne(row.id)
-    },
     statusTag(status){
       switch (status){
         case 'pending':
@@ -88,6 +81,7 @@ export default {
     search: _.debounce(
       function() {
         const filter = {}
+        filter.category = this.category
         filter.keyword = this.searchKeyword
         const m = {
           '全部': 'pending',

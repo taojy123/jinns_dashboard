@@ -7,26 +7,48 @@
     </nuxt-link>
 
     <hr class="hr--light">
-    <el-menu-item-group title="订房">
+
+    <el-menu-item-group title="订房管理">
+
       <el-menu-item index="/rooms">
-        <i class="icommon icon-employees"></i>
-        <span>客房管理</span>
+        <i class="icommon icon-home"></i>
+        <span>客房列表</span>
       </el-menu-item>
-    </el-menu-item-group>
-    <hr class="hr--light">
-    <el-menu-item-group title="商城">
-      <el-menu-item index="/products">
-        <i class="icommon icon-employees"></i>
-        <span>产品管理</span>
-      </el-menu-item>
-    </el-menu-item-group>
-    <hr class="hr--light">
-    <el-menu-item-group title="订单">
-      <el-menu-item index="/orders">
+
+      <el-menu-item index="/orders/room">
         <i class="icommon icon-contract"></i>
         <span>订单列表</span>
       </el-menu-item>
+
     </el-menu-item-group>
+
+    <hr class="hr--light">
+
+    <el-menu-item-group title="商城管理">
+
+      <el-menu-item index="/products">
+        <i class="icommon icon-products"></i>
+        <span>产品列表</span>
+      </el-menu-item>
+
+      <el-menu-item index="/orders/product">
+        <i class="icommon icon-contract"></i>
+        <span>订单列表</span>
+      </el-menu-item>
+
+    </el-menu-item-group>
+
+    <hr class="hr--light">
+
+    <el-menu-item-group title="用户管理">
+
+      <el-menu-item index="/customers">
+        <i class="icommon icon-customers"></i>
+        <span>用户列表</span>
+      </el-menu-item>
+
+    </el-menu-item-group>
+
   </el-menu>
 </template>
 
