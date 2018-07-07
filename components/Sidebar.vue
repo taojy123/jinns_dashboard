@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 @import "assets/stylesheets/core";
 .side-bar {
-  width: 240px;
+  width: 160px;
   position: fixed;
   top: 0;
   left: 0;

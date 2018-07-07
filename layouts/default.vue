@@ -30,7 +30,7 @@ export default {
   .app-frame {
     position: relative;
     min-height: 100vh;
-    padding-left: 240px;
+    padding-left: 160px;
     padding-top: 60px;
     // &::after {
     //   clear: both;
@@ -39,13 +39,13 @@ export default {
     // }
     > header {
       height: 60px;
-      @include position(fixed, 0 0 auto 240px);
+      @include position(fixed, 0 0 auto 160px);
       z-index: $zindex-header;
     }
     > aside {
       // visibility: hidden;
       min-height: 100vh;
-      width: 240px;
+      width: 160px;
       @include position(fixed, 0 auto 0 0);
       z-index: $zindex-sidebar;
     }
