@@ -11,6 +11,12 @@
     <el-table-column prop="name" label="商品名称"></el-table-column>
     <el-table-column prop="price" label="价格"></el-table-column>
     <el-table-column prop="description" label="描述" show-overflow-tooltip></el-table-column>
+    <el-table-column label="热卖" show-overflow-tooltip width="120">
+      <template slot-scope="scope" >
+        <span v-if="scope.row.is_hot"><i class="el-icon-success" style="color: green;"></i></span>
+        <span v-if="!scope.row.is_hot"><i class="el-icon-error" style="color: red;"></i></span>
+      </template>
+    </el-table-column>
     <el-table-column prop="actions" label="操作" width="160">
       <template slot-scope="scope">
         <el-button size="mini" type="primary" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>

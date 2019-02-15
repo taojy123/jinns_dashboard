@@ -8,23 +8,50 @@
             <el-col :span="16">
               <el-card class="form-page__card" shadow="never">
                 <el-row :gutter="10">
+
                   <el-col :span="16">
                     <el-x-input-field label="商品名称" storeName="product" name="name"></el-x-input-field>
                   </el-col>
                   <el-col :span="8">
                     <el-x-input-field label="价格" storeName="product" name="price"></el-x-input-field>
                   </el-col>
+
                   <el-col :span="24">
                     <el-x-input-field label="描述" storeName="product" name="description"></el-x-input-field>
                   </el-col>
+
+                </el-row>
+
+              </el-card>
+
+              <el-card class="form-page__card" shadow="never">
+                <el-row :gutter="10">
+
+                  <el-col :span="8">
+                    <el-x-switch-field label="热卖" storeName="product" name="is_hot"></el-x-switch-field>
+                  </el-col>
+
+                  <el-col :span="16">
+                    <el-form-item label="热卖图" v-if="product.data.is_hot">
+                      <upload-one-image :value="product.data.hot_pic" @change="(res) => handleUploadChange('hot_pic', res)" />
+                    </el-form-item>
+                  </el-col>
+
                 </el-row>
               </el-card>
+
             </el-col>
             <el-col :span="8">
               <el-card class="form-page__card" shadow="never">
+
                 <el-form-item label="商品主图">
-                  <upload-one-image :value="product.data.pic" @change="(res) => handleUploadChange(res)" />
+                  <upload-one-image :value="product.data.pic" @change="(res) => handleUploadChange('pic', res)" />
                 </el-form-item>
+
+                <el-form-item label="详情图">
+                  <upload-one-image :value="product.data.description_pic" @change="(res) => handleUploadChange('description_pic', res)" />
+                </el-form-item>
+
               </el-card>
             </el-col>
           </el-row>
@@ -71,8 +98,8 @@ export default {
     handleClickTab (tab, event) {
       this.updateHash(tab.name)
     },
-    handleUploadChange ({ src }) {
-      this.updateField('pic', src)
+    handleUploadChange (name, { src }) {
+      this.updateField(name, src)
     }
   }
 }
