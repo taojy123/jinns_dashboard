@@ -33,7 +33,7 @@
 
                   <el-col :span="16">
                     <el-form-item label="热卖图" v-if="product.data.is_hot">
-                      <upload-one-image :value="product.data.hot_pic" @change="(res) => handleUploadChange('hot_pic', res)" />
+                      <upload-one-image :value="product.data.hot_pic" @change="(res) => handleUploadChange('hot_pic', res)" width="320" height="150"/>
                     </el-form-item>
                   </el-col>
 
@@ -49,7 +49,7 @@
                 </el-form-item>
 
                 <el-form-item label="详情图">
-                  <upload-one-image :value="product.data.description_pic" @change="(res) => handleUploadChange('description_pic', res)" />
+                  <upload-one-image :value="product.data.description_pic" @change="(res) => handleUploadChange('description_pic', res)"  width="178" height="500"/>
                 </el-form-item>
 
               </el-card>

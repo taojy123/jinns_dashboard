@@ -48,7 +48,15 @@
         default () {
           return false
         }
-      }
+      },
+      width: {
+        type: Number,
+        default: 178,
+      },
+      height: {
+        type: Number,
+        default: 178,
+      },
     },
     data () {
       return {
@@ -63,13 +71,14 @@
     },
     computed: {
       imageStyle (){
-        if (this.url) {
-          return {
-            backgroundImage: `url(${this.url})`
-          }
-        } else {
-          return {}
+        let style = {
+          'width': `${this.width}px`,
+          'padding-top': `${this.height}px`,
         }
+        if (this.url) {
+          style.backgroundImage = `url(${this.url})`
+        }
+        return style
       },
       url (){
         if (this.image && this.image.src) {
