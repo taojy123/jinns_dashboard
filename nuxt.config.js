@@ -49,8 +49,8 @@ module.exports = {
     '@nuxtjs/axios'
   ],
   axios: {
-    baseURL: process.env.API_URL || 'https://jinns.top', // use env API_URL to override
-    browserBaseURL: process.env.API_URL_BROWSER || 'https://jinns.top', // use env API_URL_BROWSER to override
+    baseURL: process.env.API_URL || 'https://m.jinns.top', // use env API_URL to override
+    browserBaseURL: process.env.API_URL_BROWSER || 'https://m.jinns.top', // use env API_URL_BROWSER to override
     credentials: false // cross-site Access-Control requests doesn't need to be made using credentials
   },
   /*
