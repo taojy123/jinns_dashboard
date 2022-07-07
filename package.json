@@ -23,7 +23,7 @@
     "axios": "^0.16.2",
     "element-theme-chalk": "^2.3.3",
     "element-ui": "^2.3.3",
-    "moment": "^2.21.0",
+    "moment": "^2.29.4",
     "nuxt": "^1.4.0"
   },
   "devDependencies": {
