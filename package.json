@@ -24,7 +24,7 @@
     "element-theme-chalk": "^2.3.3",
     "element-ui": "^2.3.3",
     "moment": "^2.21.0",
-    "nuxt": "^1.4.0"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
