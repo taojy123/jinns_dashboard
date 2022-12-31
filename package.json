@@ -24,17 +24,17 @@
     "element-theme-chalk": "^2.3.3",
     "element-ui": "^2.3.3",
     "moment": "^2.21.0",
-    "nuxt": "^1.4.0"
+    "nuxt": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
     "bourbon": "^4.3.4",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-vue": "^4.0.0",
     "node-sass": "^4.5.3",
-    "postcss-loader": "2.1.1",
-    "sass-loader": "^6.0.6"
+    "postcss-loader": "7.0.2",
+    "sass-loader": "^13.2.0"
   }
 }
